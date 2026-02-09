@@ -1,0 +1,25 @@
+---
+slug: "pw-001-parity-invariant"
+title: "Parity invariant warmup"
+difficulty: 2
+tags: ["invariants", "parity"]
+track: "putnam-warmups"
+---
+
+## Problem
+A number starts at $1$. You may repeatedly apply one move:
+- replace $n$ by $n + 2$, or
+- replace $n$ by $3n$.
+
+Can you ever reach $2$?
+
+## Hints
+### Hint 1
+What stays the same mod $2$ under each move?
+
+### Hint 2
+Check each move modulo $2$ explicitly.
+
+## Solution
+Both moves preserve oddness: $n \mapsto n+2$ keeps parity, and $n \mapsto 3n$ keeps parity.
+Starting from $1$ (odd), you can only reach odd numbers, so you can never reach $2$ (even).
