@@ -4,6 +4,10 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import { getProblemBySlug } from "@/lib/content/mdx";
 
+import ProblemTabs from "@/components/ProblemTabs";
+import AttemptEditor from "@/components/AttemptEditor";
+
+
 type Props = { params: Promise<{ slug: string }> };
 
 export default async function ProblemPage({ params }: Props) {
@@ -36,6 +40,9 @@ export default async function ProblemPage({ params }: Props) {
           }}
         />
       </article>
+
+      <ProblemTabs attempt={<AttemptEditor />} />
+
     </main>
   );
 }
