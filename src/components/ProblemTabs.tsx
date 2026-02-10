@@ -7,23 +7,26 @@ type Tab = (typeof TABS)[number];
 
 export default function ProblemTabs({
   attempt,
+  hints,
+  solution,
+  lean,
 }: {
   attempt: React.ReactNode;
+  hints: React.ReactNode;
+  solution: React.ReactNode;
+  lean: React.ReactNode;
 }) {
   const [active, setActive] = useState<Tab>("Attempt");
 
   return (
     <div className="mt-8">
-      {/* Tab headers */}
       <div className="flex gap-2 border-b">
         {TABS.map((tab) => (
           <button
             key={tab}
             onClick={() => setActive(tab)}
             className={`px-3 py-2 text-sm font-medium ${
-              active === tab
-                ? "border-b-2 border-black"
-                : "text-gray-500 hover:text-black"
+              active === tab ? "border-b-2 border-black" : "text-gray-500 hover:text-black"
             }`}
           >
             {tab}
@@ -31,24 +34,11 @@ export default function ProblemTabs({
         ))}
       </div>
 
-      {/* Tab content */}
       <div className="mt-6">
         {active === "Attempt" && attempt}
-        {active === "Hints" && (
-          <p className="text-sm text-gray-500">
-            Hints coming soon.
-          </p>
-        )}
-        {active === "Solution" && (
-          <p className="text-sm text-gray-500">
-            Solution will appear here.
-          </p>
-        )}
-        {active === "Lean" && (
-          <p className="text-sm text-gray-500">
-            Lean verification coming soon.
-          </p>
-        )}
+        {active === "Hints" && hints}
+        {active === "Solution" && solution}
+        {active === "Lean" && lean}
       </div>
     </div>
   );

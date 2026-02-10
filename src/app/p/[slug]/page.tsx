@@ -6,6 +6,8 @@ import { getProblemBySlug } from "@/lib/content/mdx";
 
 import ProblemTabs from "@/components/ProblemTabs";
 import AttemptEditor from "@/components/AttemptEditor";
+import HintLadder from "@/components/HintLadder";
+import { splitProblemMdx } from "@/lib/content/sections";
 
 
 type Props = { params: Promise<{ slug: string }> };
@@ -14,7 +16,10 @@ export default async function ProblemPage({ params }: Props) {
   const { slug } = await params;
 
   const data = getProblemBySlug(slug);
+
   if (!data) return notFound();
+
+  const sections = splitProblemMdx(data.source);
 
   return (
     <main className="mx-auto max-w-3xl p-6">
@@ -31,7 +36,7 @@ export default async function ProblemPage({ params }: Props) {
 
       <article className="prose mt-6 max-w-none">
         <MDXRemote
-          source={data.source}
+          source={sections.problemMdx}
           options={{
             mdxOptions: {
               remarkPlugins: [remarkMath],
@@ -41,7 +46,30 @@ export default async function ProblemPage({ params }: Props) {
         />
       </article>
 
-      <ProblemTabs attempt={<AttemptEditor />} />
+      
+      <ProblemTabs
+        attempt={<AttemptEditor />}
+        hints={
+          <HintLadder
+            hints={sections.hints.map((h) => ({
+              title: h.title,
+              body: (
+                <MDXRemote
+                  source={h.mdx}
+                  options={{
+                    mdxOptions: {
+                      remarkPlugins: [remarkMath],
+                      rehypePlugins: [rehypeKatex],
+                    },
+                  }}
+                />
+              ),
+            }))}
+          />
+        }
+        solution={<p className="text-sm text-gray-500">Solution will appear here.</p>}
+        lean={<p className="text-sm text-gray-500">Lean verification coming soon.</p>}
+      />
 
     </main>
   );
