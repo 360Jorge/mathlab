@@ -8,6 +8,8 @@ import ProblemTabs from "@/components/ProblemTabs";
 import AttemptEditor from "@/components/AttemptEditor";
 import HintLadder from "@/components/HintLadder";
 import { splitProblemMdx } from "@/lib/content/sections";
+import SolutionGate from "@/components/SolutionGate";
+
 
 
 type Props = { params: Promise<{ slug: string }> };
@@ -67,7 +69,26 @@ export default async function ProblemPage({ params }: Props) {
             }))}
           />
         }
-        solution={<p className="text-sm text-gray-500">Solution will appear here.</p>}
+        solution={
+            sections.solutionMdx.trim().length === 0 ? (
+              <p className="text-sm text-gray-500">No solution yet.</p>
+            ) : (
+              <SolutionGate
+                solution={
+                  <MDXRemote
+                    source={sections.solutionMdx}
+                    options={{
+                      mdxOptions: {
+                        remarkPlugins: [remarkMath],
+                        rehypePlugins: [rehypeKatex],
+                      },
+                    }}
+                  />
+                }
+              />
+            )
+          }
+
         lean={<p className="text-sm text-gray-500">Lean verification coming soon.</p>}
       />
 
