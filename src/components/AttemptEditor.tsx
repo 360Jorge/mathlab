@@ -1,25 +1,71 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-export default function AttemptEditor() {
+export default function AttemptEditor({
+  storageKey,
+}: {
+  storageKey: string;
+}) {
   const [text, setText] = useState("");
+  const [status, setStatus] = useState<"idle" | "saved">("idle");
+  const saveTimer = useRef<number | null>(null);
+
+  // Load saved attempt on mount
+  useEffect(() => {
+    const saved = localStorage.getItem(storageKey);
+    if (saved !== null) setText(saved);
+  }, [storageKey]);
+
+  // Debounced autosave whenever text changes
+  useEffect(() => {
+    // clear previous timer
+    if (saveTimer.current) window.clearTimeout(saveTimer.current);
+
+    saveTimer.current = window.setTimeout(() => {
+      localStorage.setItem(storageKey, text);
+      setStatus("saved");
+
+      window.setTimeout(() => setStatus("idle"), 800);
+    }, 300);
+
+    return () => {
+      if (saveTimer.current) window.clearTimeout(saveTimer.current);
+    };
+  }, [text, storageKey]);
+
+  function clearAttempt() {
+    setText("");
+    localStorage.removeItem(storageKey);
+    setStatus("idle");
+  }
 
   return (
     <div className="space-y-3">
+      <div className="flex items-center justify-between">
+        <p className="text-sm text-gray-600">
+          Write your attempt. It autosaves.
+        </p>
+        <span className="text-xs text-gray-500">
+          {status === "saved" ? "Saved" : ""}
+        </span>
+      </div>
+
       <textarea
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="Write your thoughts, partial ideas, or a full solution…"
-        className="w-full min-h-[160px] rounded border p-3 text-sm"
+        className="w-full min-h-[180px] rounded border p-3 text-sm"
       />
 
-      <button
-        disabled={!text.trim()}
-        className="rounded border px-4 py-1.5 text-sm disabled:opacity-50"
-      >
-        Save attempt
-      </button>
+      <div className="flex gap-2">
+        <button
+          onClick={clearAttempt}
+          className="rounded border px-4 py-1.5 text-sm"
+        >
+          Clear
+        </button>
+      </div>
     </div>
   );
 }

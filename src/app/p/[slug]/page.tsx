@@ -50,7 +50,7 @@ export default async function ProblemPage({ params }: Props) {
 
       
       <ProblemTabs
-        attempt={<AttemptEditor />}
+        attempt={<AttemptEditor storageKey={`attempt:${slug}`} />}
         hints={
           <HintLadder
             hints={sections.hints.map((h) => ({
@@ -74,6 +74,7 @@ export default async function ProblemPage({ params }: Props) {
               <p className="text-sm text-gray-500">No solution yet.</p>
             ) : (
               <SolutionGate
+                storageKey={`solution_revealed:${slug}`}
                 solution={
                   <MDXRemote
                     source={sections.solutionMdx}

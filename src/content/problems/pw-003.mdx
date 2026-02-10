@@ -1,0 +1,45 @@
+---
+slug: "pw-003-pigeonhole"
+title: "A pigeonhole principle warmup"
+difficulty: 3
+tags: ["pigeonhole principle", "combinatorics"]
+track: "putnam-warmups"
+---
+
+## Problem
+Let $a_1, a_2, \dots, a_{11}$ be integers chosen from the set
+$$
+\{1, 2, 3, \dots, 20\}.
+$$
+Show that there exist two distinct indices $i \neq j$ such that
+$$
+|a_i - a_j| \le 1.
+$$
+
+---
+
+## Hints
+### Hint 1
+Try grouping the numbers into intervals.
+
+### Hint 2
+How many integers are in each group?
+
+---
+
+## Solution
+Partition the set $\{1,2,\dots,20\}$ into the following $10$ pairs:
+$$
+\{1,2\}, \{3,4\}, \dots, \{19,20\}.
+$$
+
+Each pair contains two integers whose difference is at most $1$.
+
+Since we choose $11$ integers but there are only $10$ such pairs, by the pigeonhole principle, at least two of the chosen integers must lie in the same pair.
+
+Therefore, there exist indices $i \neq j$ such that
+$$
+|a_i - a_j| \le 1.
+$$
+
+This completes the proof.

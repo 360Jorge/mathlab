@@ -1,0 +1,51 @@
+---
+slug: "pw-002-mod-invariant"
+title: "A modular invariant warmup"
+difficulty: 3
+tags: ["modular arithmetic", "invariants"]
+track: "putnam-warmups"
+---
+
+## Problem
+Start with the number $1$. You may repeatedly apply either of the following operations:
+- replace $n$ by $n + 3$, or
+- replace $n$ by $2n$.
+
+Is it possible to reach $5$?
+
+---
+
+## Hints
+### Hint 1
+Try working modulo a small number.
+
+### Hint 2
+Check how each operation behaves modulo $3$.
+
+---
+
+## Solution
+We examine all numbers modulo $3$.
+
+- The operation $n \mapsto n + 3$ does not change the value of $n \bmod 3$.
+- The operation $n \mapsto 2n$ sends $n \bmod 3$ to $2n \bmod 3$.
+
+Starting from $1$, the possible residues modulo $3$ are:
+$$
+1 \xrightarrow{\times 2} 2 \xrightarrow{\times 2} 1,
+$$
+so the only reachable residues are $1$ and $2$ modulo $3$.
+
+However,
+$$
+5 \equiv 2 \pmod{3},
+$$
+so the modular condition alone does not rule it out.
+
+Now check actual reachability:
+- From $1$, doubling gives $2$, then doubling gives $4$.
+- From $4$, adding $3$ gives $7$, then $10$, etc.
+
+No sequence of allowed operations produces $5$.
+
+Thus, it is **not possible** to reach $5$.
