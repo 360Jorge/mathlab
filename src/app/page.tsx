@@ -15,6 +15,14 @@ export default function Home() {
       >
         Go to Library →
       </Link>
+
+      <Link
+        href="/tracks"
+        className="mt-6 inline-block rounded border px-4 py-2 text-sm font-medium"
+      >
+        Explore Tracks →
+      </Link>
+
     </main>
   );
 }
