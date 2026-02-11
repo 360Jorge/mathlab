@@ -1,0 +1,50 @@
+# Putnam Warmups: Training Guide
+
+Putnam-style problems are different beasts. This guide is a playbook for starting, especially when you have no idea what to do.
+
+## 1) First 5 minutes: make the problem talk
+
+- **Restate it** in your own words. Identify what is given and what must be shown.
+- **Try tiny cases**: plug in small numbers, small sets, small sizes. Write down what happens.
+- **Look for unchanging quantities** (parity, mod, monotonicity, number of inversions, sign changes).
+- **Try to break it**: what would make the statement false? Often that reveals the hidden structure.
+
+### Mini-example: experimenting
+
+If an operation is repeated, your first move is usually to compute what happens after 1 step, 2 steps, 3 steps. Don’t “search for the solution” yet. Just collect facts.
+
+You’re trying to produce something like: “After each move, this quantity stays the same” or “This value keeps increasing” or “Only these residues are possible.”
+
+## 2) The most common winning moves
+
+### Invariants
+
+Ask: is there something that the allowed operation cannot change?
+
+Typical invariants: parity, residue mod $m$, gcd, sign, number of odd terms, “sum mod $m$”, and sometimes a cleverly defined quantity.
+
+### Extremes
+
+If objects can’t get smaller forever, try choosing a smallest counterexample. Or track an “energy” that always decreases. This kills many process/game problems.
+
+### Rewriting
+
+Rewrite expressions until the structure appears. For example: factor, complete the square, rewrite differences, or convert a condition into modular arithmetic.
+
+## 3) What to do when you’re stuck
+
+1. Write down **three concrete examples** and one extreme example.
+2. Try a different viewpoint: mod 2, mod 3, mod 4… or parity/gcd.
+3. Ask: “If I had to prove this, what would I want to be true?”
+4. Use one hint. Then try again for 5 minutes.
+
+## A good attempt is not a full solution
+
+Your goal is to develop instincts. A good attempt can be:
+
+- a few examples and a pattern
+- a candidate invariant
+- a useful rewrite
+- a partial lemma
+
+When you want, go back to the track and start Problem 1.
