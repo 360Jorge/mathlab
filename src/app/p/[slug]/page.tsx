@@ -53,6 +53,7 @@ export default async function ProblemPage({ params }: Props) {
         attempt={<AttemptEditor storageKey={`attempt:${slug}`} />}
         hints={
           <HintLadder
+            storageKey={`hints_revealed:${slug}`}
             hints={sections.hints.map((h) => ({
               title: h.title,
               body: (

@@ -3,6 +3,9 @@ import Link from "next/link";
 import { TRACKS } from "@/lib/content/tracks";
 import { getAllProblems } from "@/lib/content/mdx";
 
+import ProgressBadges from "@/components/ProgressBadges";
+
+
 type Props = { params: Promise<{ slug: string }> };
 
 export default async function TrackPage({ params }: Props) {
@@ -42,6 +45,8 @@ export default async function TrackPage({ params }: Props) {
                 Difficulty {p!.difficulty}
               </span>
             </div>
+
+            <ProgressBadges slug={p!.slug} />
           </li>
         ))}
       </ul>

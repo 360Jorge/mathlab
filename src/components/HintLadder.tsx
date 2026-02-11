@@ -1,13 +1,29 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export default function HintLadder({
   hints,
+  storageKey,
 }: {
   hints: Array<{ title: string; body: React.ReactNode }>;
+  storageKey: string;
 }) {
   const [revealed, setRevealed] = useState(0);
+
+  // load persisted
+  useEffect(() => {
+    const saved = localStorage.getItem(storageKey);
+    if (saved) {
+      const n = Number(saved);
+      if (!Number.isNaN(n)) setRevealed(Math.max(0, Math.min(n, hints.length)));
+    }
+  }, [storageKey, hints.length]);
+
+  // persist on change
+  useEffect(() => {
+    localStorage.setItem(storageKey, String(revealed));
+  }, [revealed, storageKey]);
 
   const canRevealMore = revealed < hints.length;
 
