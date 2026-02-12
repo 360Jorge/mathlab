@@ -15,6 +15,26 @@ If an operation is repeated, your first move is usually to compute what happens 
 
 You’re trying to produce something like: “After each move, this quantity stays the same” or “This value keeps increasing” or “Only these residues are possible.”
 
+### Micro-example: an invariant you can actually compute
+
+Suppose you have a process where, at each step, you may replace a number $n$ by either
+
+- $n \mapsto n + 3$, or
+- $n \mapsto 2n$.
+
+A good “first experiment” is to track the value of $n$ modulo a small number. Let’s try modulo $3$.
+
+- If $n \mapsto n + 3$, then $$n \equiv n + 3 \pmod{3},$$ so the residue class mod $3$ does not change.
+- If $n \mapsto 2n$, then $$n \equiv r \pmod{3} \Rightarrow 2n \equiv 2r \pmod{3},$$ which just permutes the residues.
+
+Starting from $n=1$, repeated doubling cycles the residues:
+$$
+1 \xrightarrow{\times 2} 2 \xrightarrow{\times 2} 1 \pmod{3}.
+$$
+
+So the “mod $3$ view” quickly tells you which residue classes you can keep hitting, and which ones you might never see. This is exactly the kind of cheap computation that often reveals the invariant you need.
+
+
 ## 2) The most common winning moves
 
 ### Invariants
