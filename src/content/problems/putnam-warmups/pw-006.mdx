@@ -1,0 +1,51 @@
+---
+title: Powers Mod 3 Pattern
+difficulty: 1
+track: putnam-warmups
+slug: pw-006-powers-mod3
+---
+
+## Problem
+
+Prove that $2^n + 1$ is divisible by $3$ infinitely often.
+
+---
+
+## Hints
+
+### Nudge
+Compute the first few values of $2^n+1$ and reduce them modulo $3$.
+
+### Focus
+You should notice that the powers of $2$ modulo $3$ repeat in a very short cycle.
+
+### Key idea
+Find exactly when
+$$
+2^n \equiv -1 \pmod{3}.
+$$
+That is the same as asking when $2^n+1$ is divisible by $3$.
+
+### Finish
+Once you identify one infinite family of exponents $n$ for which this happens, you are done.
+
+---
+
+## Solution
+
+Compute powers mod 3:
+
+$$
+2^1=2,\quad
+2^2=1,\quad
+2^3=2,\quad
+2^4=1,\dots
+$$
+
+Cycle length is 2.
+
+So $2^n \equiv 2 \pmod{3}$ for odd $n$.
+
+Thus $2^n+1\equiv0\pmod{3}$ whenever $n$ is odd.
+
+Hence infinitely many such $n$ exist.

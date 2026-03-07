@@ -1,0 +1,42 @@
+---
+title: Coloring Invariant
+difficulty: 2
+track: putnam-warmups
+slug: pw-009-coloring-invariant
+---
+
+## Problem
+
+A $5 \times 5$ board is colored like a chessboard in black and white squares.
+
+Can you place dominoes, each covering exactly two adjacent squares, so that the entire board is covered except for one square?
+
+---
+
+## Hints
+
+### Nudge
+Before worrying about exact placements, count how many black and white squares the board has.
+
+### Focus
+Each domino always covers two adjacent squares. What does that force about the colors it covers?
+
+### Key idea
+A coloring argument tracks something global that every move preserves. Here, each domino covers one black and one white square.
+
+### Finish
+If one square is left uncovered, what must be true about the numbers of uncovered black and white squares? Does that match the board?
+
+## Solution
+
+A $5\times 5$ chessboard has 25 squares, so one color appears 13 times and the other 12 times.
+
+Each domino covers exactly two adjacent squares, which means one black square and one white square.
+
+So any collection of dominoes covers equal numbers of black and white squares.
+
+If exactly one square is left uncovered, then the covered region has unequal numbers of black and white squares, since the full board had 13 of one color and 12 of the other.
+
+That is impossible.
+
+So the board cannot be covered in this way.

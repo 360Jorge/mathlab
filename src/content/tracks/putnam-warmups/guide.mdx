@@ -2,16 +2,18 @@
 
 Putnam-style problems are different beasts. This guide is a playbook for starting, especially when you have no idea what to do.
 
-## 1) First 5 minutes: make the problem talk
+## First 5 minutes: make the problem talk
 
 - **Restate it** in your own words. Identify what is given and what must be shown.
-- **Try tiny cases**: plug in small numbers, small sets, small sizes. Write down what happens.
+- **Try tiny cases**: plug in small numbers, small sets, small sizes. Write down what happens. 
+If the problem involves a sequence, compute the first $4-5$ terms. If it's about sets, try sets of size $1, 2, 3.$ If it's a functional equation, plug in $x=0, x=1, x=-1.$
 - **Look for unchanging quantities** (parity, mod, monotonicity, number of inversions, sign changes).
-- **Try to break it**: what would make the statement false? Often that reveals the hidden structure.
+- **Try to break it**: what would make the statement false? Often that reveals the hidden structure. 
+For example, if the problem says "for all $n$," try to find which n makes the statement barely true, or which would make it false if the condition were slightly weaker.
 
 ### Mini-example: experimenting
 
-If an operation is repeated, your first move is usually to compute what happens after 1 step, 2 steps, 3 steps. Don’t “search for the solution” yet. Just collect facts.
+If an operation is repeated, your first move is usually to compute what happens after $1$ step, $2$ steps, $3$ steps. Don’t “search for the solution” yet. Just collect facts.
 
 You’re trying to produce something like: “After each move, this quantity stays the same” or “This value keeps increasing” or “Only these residues are possible.”
 
@@ -34,8 +36,30 @@ $$
 
 So the “mod $3$ view” quickly tells you which residue classes you can keep hitting, and which ones you might never see. This is exactly the kind of cheap computation that often reveals the invariant you need.
 
+## A practical rule: thinking happens on paper
 
-## 2) The most common winning moves
+Many beginners get stuck because they try to “think harder” while staring at the problem.
+
+That almost never works.
+
+Mathematical progress usually begins when you start writing things down — even random attempts.
+
+- compute a few values
+- draw a picture
+- rewrite the expression
+- try to break the statement
+- test extreme cases
+
+The goal is not to be correct.  
+The goal is to *generate information*.
+
+Once something appears on paper, you can react to it.  
+Before that, your brain has nothing concrete to work with.
+
+In practice, most problems start solving themselves only after you stop waiting for an idea and start interacting with the problem.
+
+
+## The most common winning moves
 
 ### Invariants
 
@@ -51,12 +75,28 @@ If objects can’t get smaller forever, try choosing a smallest counterexample. 
 
 Rewrite expressions until the structure appears. For example: factor, complete the square, rewrite differences, or convert a condition into modular arithmetic.
 
-## 3) What to do when you’re stuck
+## When you're stuck: cycle through these lenses
 
-1. Write down **three concrete examples** and one extreme example.
-2. Try a different viewpoint: mod 2, mod 3, mod 4… or parity/gcd.
-3. Ask: “If I had to prove this, what would I want to be true?”
-4. Use one hint. Then try again for 5 minutes.
+When you hit a wall, don't just stare — shift your perspective. Try looking at the problem through different lenses:
+
+- **Compute three concrete examples** and one extreme example (very large, very small, or a boundary case).
+- **Try a different viewpoint:** mod 2, mod 3, mod 4… or parity/gcd.
+- **Ask: “If I had to prove this, what would I want to be true?”** Sometimes working backwards reveals the path forward.
+- **Use one hint.** Then try again for 5 minutes before looking at another.
+
+The goal is to keep the problem moving. Each lens might reveal something the others missed.
+
+## After you solve it (or see the solution)
+
+Once you have a solution — yours or someone else's — don't just move on. Take 2 minutes to ask:
+
+- **What was the key idea?** (An invariant? An extremal argument? A clever rewrite?)
+
+- **Could I have found it faster?** What did I miss in my first attempts?
+
+- **What pattern does this fit?** Is this a "track parity" problem? A "smallest counterexample" problem?
+
+This is how you build instincts. The goal isn't just solving problems — it's recognizing types of problems faster next time.
 
 ## A good attempt is not a full solution
 

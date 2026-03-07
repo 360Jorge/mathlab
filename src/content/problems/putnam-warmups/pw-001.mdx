@@ -13,12 +13,23 @@ A number starts at $1$. You may repeatedly apply one move:
 
 Can you ever reach $2$?
 
-## Hints
-### Hint 1
-What stays the same mod $2$ under each move?
+---
 
-### Hint 2
-Check each move modulo $2$ explicitly.
+## Hints
+
+### Nudge
+Start by trying small examples. Perform the operation a few times and write down what happens to the numbers.
+
+### Focus
+Look for a quantity that does **not change** when you apply the operation. Parity (even/odd) is often a good first thing to check.
+
+### Key idea
+Track the parity of the numbers involved in the operation. Does the move change whether they are even or odd?
+
+### Finish
+Once you identify a quantity whose parity never changes, compare the initial situation with the target situation. If their parity differs, the transformation is impossible.
+
+---
 
 ## Solution
 Both moves preserve oddness: $n \mapsto n+2$ keeps parity, and $n \mapsto 3n$ keeps parity.

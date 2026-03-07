@@ -44,7 +44,7 @@ export default function AttemptEditor({
     <div className="space-y-3">
       <div className="flex items-center justify-between">
         <p className="text-sm text-gray-600">
-          Write your attempt. It autosaves.
+          Your Work
         </p>
         <span className="text-xs text-gray-500">
           {status === "saved" ? "Saved" : ""}
@@ -54,7 +54,7 @@ export default function AttemptEditor({
       <textarea
         value={text}
         onChange={(e) => setText(e.target.value)}
-        placeholder="Write your thoughts, partial ideas, or a full solution…"
+        placeholder="Start by writing anything you notice. Try small cases, compute examples, look for patterns, or rewrite the problem."
         className="w-full min-h-[180px] rounded border p-3 text-sm"
       />
 

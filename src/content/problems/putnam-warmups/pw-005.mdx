@@ -1,0 +1,44 @@
+---
+title: Divisible Difference Process
+difficulty: 1
+track: putnam-warmups
+slug: pw-005-divisible-difference
+---
+
+## Problem
+
+Start with two integers $a$ and $b$.
+
+You may repeatedly replace the larger number by the difference of the two numbers.
+
+Can the process continue forever?
+
+---
+
+## Hints
+
+### Nudge
+Try the process on a few concrete pairs like $(10,6)$, $(15,9)$, or $(7,2)$. What seems to be happening?
+
+### Focus
+Instead of tracking the numbers separately, look for a quantity that always gets smaller.
+
+### Key idea
+If $a>b$, the move replaces $(a,b)$ by $(a-b,b)$. Compare the new sum to the old sum.
+
+### Finish
+You now have a positive integer quantity that strictly decreases every step. Why does that rule out an infinite process?
+
+---
+
+## Solution
+
+Each move replaces $(a,b)$ with $(a-b,b)$ where $a>b$.
+
+The new sum is $(a-b)+b = a < a+b$.
+
+Thus the sum strictly decreases and is always positive integer.
+
+Therefore the process must terminate.
+
+So **it cannot continue forever**.

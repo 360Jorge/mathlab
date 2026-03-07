@@ -2,21 +2,19 @@
 
 import { useState } from "react";
 
-const TABS = ["Attempt", "Hints", "Solution", "Lean"] as const;
+const TABS = ["Work", "Hints", "Solution"] as const;
 type Tab = (typeof TABS)[number];
 
 export default function ProblemTabs({
-  attempt,
+  work,
   hints,
   solution,
-  lean,
 }: {
-  attempt: React.ReactNode;
+  work: React.ReactNode;
   hints: React.ReactNode;
   solution: React.ReactNode;
-  lean: React.ReactNode;
 }) {
-  const [active, setActive] = useState<Tab>("Attempt");
+  const [active, setActive] = useState<Tab>("Work");
 
   return (
     <div className="mt-8">
@@ -26,7 +24,9 @@ export default function ProblemTabs({
             key={tab}
             onClick={() => setActive(tab)}
             className={`px-3 py-2 text-sm font-medium ${
-              active === tab ? "border-b-2 border-black" : "text-gray-500 hover:text-black"
+              active === tab
+                ? "border-b-2 border-black"
+                : "text-gray-500 hover:text-black"
             }`}
           >
             {tab}
@@ -35,10 +35,9 @@ export default function ProblemTabs({
       </div>
 
       <div className="mt-6">
-        {active === "Attempt" && attempt}
+        {active === "Work" && work}
         {active === "Hints" && hints}
         {active === "Solution" && solution}
-        {active === "Lean" && lean}
       </div>
     </div>
   );

@@ -1,0 +1,46 @@
+---
+title: Sum Parity Invariant
+difficulty: 1
+track: putnam-warmups
+slug: pw-004-sum-parity
+---
+
+## Problem
+
+You start with the numbers $1, 1, 1, 1$ written on a board.
+
+In one move, you may erase any two numbers $a, b$ and replace them with $a+b+1$.
+
+Can you eventually obtain the number $2025$?
+
+---
+
+## Hints
+
+### Nudge
+Don’t try to jump straight to $2025$. First play with the process for a few moves and record what happens to the total sum.
+
+### Focus
+Each move replaces two numbers $a,b$ by a single number $a+b+1$. Compare the new total sum to the old one.
+
+### Key idea
+You are not really tracking the individual numbers. You are tracking a quantity that is easier to control: the sum of all numbers on the board, especially its parity.
+
+### Finish
+How many moves are required to go from 4 numbers down to 1 number? If the parity flips each move, what parity must the final number have?
+
+---
+
+## Solution
+
+The total sum initially is $4$ (even).
+
+Each move replaces $a+b$ with $a+b+1$, so the total sum increases by exactly $1$.
+
+Thus parity flips every move.
+
+After 3 moves (to reach one number), parity becomes odd.
+
+But $2025$ is odd — so actually reachable.
+
+Therefore **yes, it is possible**.

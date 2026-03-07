@@ -1,0 +1,40 @@
+---
+title: Smallest Counterexample Principle
+difficulty: 2
+track: putnam-warmups
+slug: pw-007-smallest-counterexample
+---
+
+## Problem
+
+Every integer greater than 1 can be written as a product of primes.
+
+---
+
+## Hints
+
+### Nudge
+This is a classic place to use contradiction. Suppose the statement fails somewhere.
+
+### Focus
+If there is a counterexample, choose the smallest one. Smallest-counterexample arguments often force the smaller pieces to behave well.
+
+### Key idea
+If your smallest bad integer $n$ is not prime, then it factors as $n=ab$ with smaller positive integers $a,b<n$.
+
+### Finish
+Why must both $a$ and $b$ already factor into primes? And what does that imply about $n$?
+
+---
+
+## Solution
+
+Assume a smallest counterexample $n>1$ exists.
+
+Then $n$ is not prime, so $n=ab$ with $1<a,b<n$.
+
+By minimality, both $a$ and $b$ factor into primes.
+
+Thus $n$ factors into primes — contradiction.
+
+Therefore every integer greater than 1 factors into primes.

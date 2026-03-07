@@ -8,7 +8,7 @@ export default function LibraryPage() {
     <main className="mx-auto max-w-3xl p-6">
       <h1 className="text-2xl font-semibold">Library</h1>
       <p className="mt-2 text-sm text-gray-600">
-        Training problems with hints, solutions, and (soon) Lean verification.
+        Training problems with hints, and solutions.
       </p>
 
       <ul className="mt-6 space-y-3">

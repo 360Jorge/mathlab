@@ -72,7 +72,7 @@ export default async function ProblemPage({ params }: Props) {
 
       
       <ProblemTabs
-        attempt={<AttemptEditor storageKey={`attempt:${slug}`} />}
+        work={<AttemptEditor storageKey={`attempt:${slug}`} />}
         hints={
           <HintLadder
             storageKey={`hints_revealed:${slug}`}
@@ -113,7 +113,6 @@ export default async function ProblemPage({ params }: Props) {
             )
           }
 
-        lean={<p className="text-sm text-gray-500">Lean verification coming soon.</p>}
       />
 
       {track ? (
