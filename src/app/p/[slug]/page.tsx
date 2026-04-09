@@ -2,18 +2,12 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
-import { getProblemBySlug } from "@/lib/content/mdx";
-
-import ProblemTabs from "@/components/ProblemTabs";
-import AttemptEditor from "@/components/AttemptEditor";
-import HintLadder from "@/components/HintLadder";
-import { splitProblemMdx } from "@/lib/content/sections";
-import SolutionGate from "@/components/SolutionGate";
-
 import Link from "next/link";
-import { TRACKS } from "@/lib/content/tracks";
-import { getAllProblems } from "@/lib/content/mdx";
 
+import { getProblemBySlug, getAllProblems } from "@/lib/content/mdx";
+import { splitProblemMdx } from "@/lib/content/sections";
+import { TRACKS } from "@/lib/content/tracks";
+import ProblemWorkspace from "@/components/ProblemWorkspace";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -21,11 +15,9 @@ export default async function ProblemPage({ params }: Props) {
   const { slug } = await params;
 
   const data = getProblemBySlug(slug);
-
   if (!data) return notFound();
 
   const sections = splitProblemMdx(data.source);
-
   const allProblems = getAllProblems();
 
   const trackSlug = data.meta.track as string | undefined;
@@ -44,6 +36,36 @@ export default async function ProblemPage({ params }: Props) {
   const prevProblem = prevSlug
     ? allProblems.find((p) => p.slug === prevSlug)
     : undefined;
+
+  const renderedHints = sections.hints.map((h) => ({
+  title: h.title,
+  body: (
+    <MDXRemote
+      source={h.mdx}
+      options={{
+        mdxOptions: {
+          remarkPlugins: [remarkMath],
+          rehypePlugins: [rehypeKatex],
+        },
+      }}
+    />
+  ),
+}));
+
+const renderedSolution =
+  sections.solutionMdx.trim().length === 0 ? (
+    <p className="text-sm text-gray-500">No solution yet.</p>
+  ) : (
+    <MDXRemote
+      source={sections.solutionMdx}
+      options={{
+        mdxOptions: {
+          remarkPlugins: [remarkMath],
+          rehypePlugins: [rehypeKatex],
+        },
+      }}
+    />
+  );
 
   return (
     <main className="mx-auto max-w-3xl p-6">
@@ -70,49 +92,12 @@ export default async function ProblemPage({ params }: Props) {
         />
       </article>
 
-      
-      <ProblemTabs
-        work={<AttemptEditor storageKey={`attempt:${slug}`} />}
-        hints={
-          <HintLadder
-            storageKey={`hints_revealed:${slug}`}
-            hints={sections.hints.map((h) => ({
-              title: h.title,
-              body: (
-                <MDXRemote
-                  source={h.mdx}
-                  options={{
-                    mdxOptions: {
-                      remarkPlugins: [remarkMath],
-                      rehypePlugins: [rehypeKatex],
-                    },
-                  }}
-                />
-              ),
-            }))}
-          />
-        }
-        solution={
-            sections.solutionMdx.trim().length === 0 ? (
-              <p className="text-sm text-gray-500">No solution yet.</p>
-            ) : (
-              <SolutionGate
-                storageKey={`solution_revealed:${slug}`}
-                solution={
-                  <MDXRemote
-                    source={sections.solutionMdx}
-                    options={{
-                      mdxOptions: {
-                        remarkPlugins: [remarkMath],
-                        rehypePlugins: [rehypeKatex],
-                      },
-                    }}
-                  />
-                }
-              />
-            )
-          }
-
+      <ProblemWorkspace
+        slug={slug}
+        problemTitle={data.meta.title}
+        problemText={sections.problemMdx}
+        hints={renderedHints}
+        solution={renderedSolution}
       />
 
       {track ? (
@@ -138,7 +123,6 @@ export default async function ProblemPage({ params }: Props) {
               )}
             </div>
 
-            {/* Optional: previous link (nice for navigation) */}
             {prevProblem ? (
               <Link
                 href={`/p/${prevProblem.slug}`}
@@ -152,8 +136,6 @@ export default async function ProblemPage({ params }: Props) {
           </div>
         </div>
       ) : null}
-
-
     </main>
   );
 }

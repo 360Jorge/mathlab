@@ -2,24 +2,38 @@
 
 import { useEffect, useRef, useState } from "react";
 
+type AttemptEditorProps = {
+  storageKey: string;
+  value?: string;
+  onChange?: (value: string) => void;
+  onAskAI?: () => void;
+};
+
 export default function AttemptEditor({
   storageKey,
-}: {
-  storageKey: string;
-}) {
-  const [text, setText] = useState("");
+  value,
+  onChange,
+  onAskAI,
+}: AttemptEditorProps) {
+  const [internalText, setInternalText] = useState("");
   const [status, setStatus] = useState<"idle" | "saved">("idle");
   const saveTimer = useRef<number | null>(null);
 
-  // Load saved attempt on mount
+  const isControlled = value !== undefined;
+  const text = isControlled ? value : internalText;
+
   useEffect(() => {
     const saved = localStorage.getItem(storageKey);
-    if (saved !== null) setText(saved);
-  }, [storageKey]);
+    if (saved !== null) {
+      if (isControlled) {
+        onChange?.(saved);
+      } else {
+        setInternalText(saved);
+      }
+    }
+  }, [storageKey, isControlled, onChange]);
 
-  // Debounced autosave whenever text changes
   useEffect(() => {
-    // clear previous timer
     if (saveTimer.current) window.clearTimeout(saveTimer.current);
 
     saveTimer.current = window.setTimeout(() => {
@@ -34,8 +48,20 @@ export default function AttemptEditor({
     };
   }, [text, storageKey]);
 
+  function handleChange(next: string) {
+    if (isControlled) {
+      onChange?.(next);
+    } else {
+      setInternalText(next);
+    }
+  }
+
   function clearAttempt() {
-    setText("");
+    if (isControlled) {
+      onChange?.("");
+    } else {
+      setInternalText("");
+    }
     localStorage.removeItem(storageKey);
     setStatus("idle");
   }
@@ -43,9 +69,7 @@ export default function AttemptEditor({
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-between">
-        <p className="text-sm text-gray-600">
-          Your Work
-        </p>
+        <p className="text-sm text-gray-600">Your Work</p>
         <span className="text-xs text-gray-500">
           {status === "saved" ? "Saved" : ""}
         </span>
@@ -53,9 +77,9 @@ export default function AttemptEditor({
 
       <textarea
         value={text}
-        onChange={(e) => setText(e.target.value)}
+        onChange={(e) => handleChange(e.target.value)}
         placeholder="Start by writing anything you notice. Try small cases, compute examples, look for patterns, or rewrite the problem."
-        className="w-full min-h-[180px] rounded border p-3 text-sm"
+        className="min-h-[180px] w-full rounded border p-3 text-sm"
       />
 
       <div className="flex gap-2">
@@ -65,6 +89,15 @@ export default function AttemptEditor({
         >
           Clear
         </button>
+
+        {onAskAI ? (
+          <button
+            onClick={onAskAI}
+            className="rounded border px-4 py-1.5 text-sm"
+          >
+            Ask AI for feedback
+          </button>
+        ) : null}
       </div>
     </div>
   );

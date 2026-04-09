@@ -1,9 +1,14 @@
 import Link from "next/link";
 
+import AuthButton from "@/components/AuthButton";
+
 export default function Home() {
   return (
     <main className="mx-auto max-w-3xl p-6">
-      <h1 className="text-3xl font-bold">MathLab</h1>
+      <div className="mb-6 flex items-center justify-between">
+        <h1 className="text-3xl font-bold">MathLab</h1>
+        <AuthButton />
+      </div>
 
       <p className="mt-4 text-gray-700">
         A structured training platform for learning how to think through
