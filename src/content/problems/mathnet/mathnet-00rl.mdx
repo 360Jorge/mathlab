@@ -1,0 +1,47 @@
+---
+slug: "mathnet-00rl"
+title: "BMO 2016 Short List Final problem"
+difficulty: 3
+track: "mathnet-sample"
+domain: geometry
+topics:
+  - geometry
+strategies:
+moves:
+source: MathNet
+---
+
+## Problem
+The point $M$ lies on the side $AB$ of the circumscribed quadrilateral $ABCD$. The points $I_1, I_2$, and $I_3$ are the incenters of $\triangle MBC$, $\triangle MCD$, and $\triangle MDA$. Show that the points $M, I_1, I_2$, and $I_3$ lie on a circle.
+
+---
+
+## Hints
+
+### Nudge
+Start by identifying the main structure of the problem.
+
+### Focus
+Think about what mathematical object or property is central.
+
+### Key idea
+Look for a standard technique that applies here.
+
+### Finish
+Connect the key idea to reach the conclusion.
+
+---
+
+## Solution
+Lemma. Let $I$ be the incenter of $\triangle ABC$ and let the points $P$ and $Q$ lie on the lines $AB$ and $AC$. Then the points $A, I, P$, and $Q$ lie on a circle if and only if
+$$
+\overline{BP} + \overline{CQ} = BC
+$$
+where $\overline{BP}$ equals $|BP|$ if $P$ lies in the ray $BA \rightarrow$ and $-|BP|$ if it does not, and similarly for $\overline{CQ}$.
+
+*Proof of the lemma.* We shall only consider the case when $P$ and $Q$ lie in the segments $AB$ and $AC$. All other cases are treated analogously.
+
+Suppose that $A, I, P$, and $Q$ lie on a circle. Let $D$ and $E$ be the contact points of the incircle of $\triangle ABC$ with $AB$ and $AC$. We have that $\angle PIQ = 180^\circ - \alpha$, so $\angle DIP = \angle EIQ$ and, therefore, $\triangle DIP \simeq \triangle EIQ$. This gives us $DP = EQ$ and $BP + CQ = BD + CE = BC$, as needed.
+The converse is established by following the foregoing chain of inequalities in reverse. $\square$
+
+Let the circumcircle of $\triangle MI_1I_3$ meet the lines $AB, CM, \text{ and } DM$ for the second time at $P, Q, \text{ and } R$. By the lemma, $\overline{BP}+\overline{CQ} = \overline{BC}$ and $\overline{DR}+\overline{AP} = \overline{DA}$. Therefore, $\overline{CQ}+\overline{DR} = \overline{BC}+\overline{DA}-\overline{BP}-\overline{AP} = \overline{BC}+\overline{DA}-\overline{AB}$. Since $ABCD$ is circumscribed, this is equal to $CD$, and, by the lemma, the proof is complete.

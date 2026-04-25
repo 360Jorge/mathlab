@@ -1,0 +1,74 @@
+---
+slug: "mathnet-03nj"
+title: "Canadian Mathematical Olympiad problem"
+difficulty: 3
+track: "mathnet-sample"
+domain: geometry
+topics:
+  - geometry
+strategies:
+moves:
+source: MathNet
+---
+
+## Problem
+Problem:
+A circle is inscribed in a rhombus $A B C D$. Points $P$ and $Q$ vary on line segments $\overline{A B}$ and $\overline{A D}$, respectively, so that $\overline{P Q}$ is tangent to the circle. Show that for all such line segments $\overline{P Q}$, the area of triangle $C P Q$ is constant.
+
+---
+
+## Hints
+
+### Nudge
+Start by identifying the main structure of the problem.
+
+### Focus
+Think about what mathematical object or property is central.
+
+### Key idea
+Look for a standard technique that applies here.
+
+### Finish
+Connect the key idea to reach the conclusion.
+
+---
+
+## Solution
+Solution:
+Let the circle be tangent to $\overline{P Q}$, $\overline{A B}$, $\overline{A D}$ at $T$, $U$, and $V$, respectively. Let $p = P T = P U$ and $q = Q T = Q V$. Let $a = A U = A V$ and $b = B U = D V$. Then the side length of the rhombus is $a + b$.
+
+
+
+Let $\theta = \angle B A D$, so $\angle A B C = \angle A D C = 180^{\circ} - \theta$. Then (using the notation $[XYZ]$ for the area of a triangle of vertices $X, Y, Z$)
+$$
+\begin{aligned}
+& [A P Q] = \frac{1}{2} \cdot A P \cdot A Q \cdot \sin \theta = \frac{1}{2}(a-p)(a-q) \sin \theta \\
+& [B C P] = \frac{1}{2} \cdot B P \cdot B C \cdot \sin (180^{\circ} - \theta) = \frac{1}{2}(b+p)(a+b) \sin \theta \\
+& [C D Q] = \frac{1}{2} \cdot D Q \cdot C D \cdot \sin (180^{\circ} - \theta) = \frac{1}{2}(b+q)(a+b) \sin \theta
+\end{aligned}
+$$
+So
+$$
+\begin{aligned}
+[C P Q] & = [A B C D] - [A P Q] - [B C P] - [C D Q] \\
+& = (a+b)^2 \sin \theta - \frac{1}{2}(a-p)(a-q) \sin \theta - \frac{1}{2}(b+p)(a+b) \sin \theta - \frac{1}{2}(b+q)(a+b) \sin \theta \\
+& = \frac{1}{2}\left(a^2 + 2 a b - b p - b q - p q\right) \sin \theta
+\end{aligned}
+$$
+Let $O$ be the center of the circle, and let $r$ be the radius of the circle. Let $x = \angle T O P = \angle U O P$ and $y = \angle T O Q = \angle V O Q$. Then $\tan x = \frac{p}{r}$ and $\tan y = \frac{q}{r}$.
+
+
+
+Note that $\angle U O V = 2x + 2y$, so $\angle A O U = x + y$. Also, $\angle A O B = 90^{\circ}$, so $\angle O B U = x + y$. Therefore,
+$$
+\tan (x + y) = \frac{a}{r} = \frac{r}{b}
+$$
+so $r^2 = a b$. But
+$$
+\frac{r}{b} = \tan (x + y) = \frac{\tan x + \tan y}{1 - \tan x \tan y} = \frac{\frac{p}{r} + \frac{q}{r}}{1 - \frac{p}{r} \cdot \frac{q}{r}} = \frac{r(p+q)}{r^2 - p q} = \frac{r(p+q)}{a b - p q}.
+$$
+Hence, $a b - p q = b p + b q$, so $b p + b q + p q = a b$. Therefore,
+$$
+[C P Q] = \frac{1}{2}\left(a^2 + 2 a b - b p - b q - p q\right) \sin \theta = \frac{1}{2}\left(a^2 + a b\right) \sin \theta
+$$
+which is constant.

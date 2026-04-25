@@ -1,0 +1,57 @@
+---
+slug: "mathnet-04xa"
+title: "Cesko-Slovacko-Poljsko problem"
+difficulty: 3
+track: "mathnet-sample"
+domain: geometry
+topics:
+  - geometry
+strategies:
+moves:
+source: MathNet
+---
+
+## Problem
+Given a circle $k$ and its chord $AB$ which is not the diameter. Let $C$ be any point inside the longer arc of $k$. We denote by $K$ and $L$ the reflections of $A$ and $B$ with respect to the axes $BC$ and $AC$. Prove that the distance of the midpoints of the line segments $KL$ and $AB$ is independent of the location of the point $C$.
+
+---
+
+## Hints
+
+### Nudge
+Start by identifying the main structure of the problem.
+
+### Focus
+Think about what mathematical object or property is central.
+
+### Key idea
+Look for a standard technique that applies here.
+
+### Finish
+Connect the key idea to reach the conclusion.
+
+---
+
+## Solution
+Denote by $S$ the midpoint of $AB$, by $M$ the midpoint of $KL$, and by $P$ and $Q$ the feet of the altitudes from $A$ and $B$ in the triangle $ABC$. Obviously, $P$ and $Q$ are the midpoints of $AK$ and $BL$ respectively (fig. 3). Therefore $QS$ is the mid-segment in the triangle $LAB$ and $MP$ is the mid-segment in the triangle $LAK$. We have
+$$
+QS = \frac{1}{2} LA, \quad MP = \frac{1}{2} LA \quad \text{and} \quad QS \parallel LA \parallel MP.
+$$
+thus $SPMQ$ is a parallelogram (this is true even in the case of "degenerate" triangles $LAB$ or $LAK$).
+
+Fig. 3
+The points $P$ and $Q$ lie on the Thales circle over $AB$, so $SP = SQ = \frac{1}{2} AB$. This implies the parallelogram $SPMQ$ is a rhombus and the length of its side is independent of the location of $C$. To prove that also the length of its diagonal $SM$ is independent of $C$, it suffices to show that the size of the angle spanned by its sides $SP$ and $SQ$ is constant when moving $C$ along $k$ (then all the rhombuses $SPMQ$ and also their diagonals $SM$ are congruent).
+
+Fig. 4a
+
+Fig. 4b
+If the angle $\alpha$ in the triangle $ABC$ is acute, the point $Q$ lies inside of $AC$ (the angle $\gamma$ is always acute by the statement of the problem) and the angle $PSQ$ is central to the angle $PAQ$, which is inscribed over the chord $PQ$ of the Thales circle over $AB$ (fig. 4a). Hence
+$$
+\angle PSQ = 2 \angle PAQ = 2(90^\circ - \gamma) = 180^\circ - 2\gamma.
+$$
+
+The same formula we get when $\alpha$ is non-acute, since in this case $\beta$ is acute and we can use the inscribed angle $PBQ$ instead of $PAQ$ (fig. 4b):
+$$
+\angle PSQ = 2 \angle PBQ = 2(90^\circ - \gamma) = 180^\circ - 2\gamma.
+$$
+As the size of $\gamma$ does not change when moving $C$ along $k$ (it is an inscribed angle over the fixed chord $AB$), the size of the angle $PSQ$ also does not change.

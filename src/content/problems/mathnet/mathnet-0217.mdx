@@ -1,0 +1,49 @@
+---
+slug: "mathnet-0217"
+title: "15th Benelux Mathematical Olympiad problem"
+difficulty: 3
+track: "mathnet-sample"
+domain: geometry
+topics:
+  - geometry
+strategies:
+moves:
+source: MathNet
+---
+
+## Problem
+Problem:
+Let $ABC$ be a triangle with incentre $I$ and circumcircle $\omega$. Let $N$ denote the second point of intersection of line $AI$ and $\omega$. The line through $I$ perpendicular to $AI$ intersects line $BC$, segment $[AB]$, and segment $[AC]$ at the points $D, E$, and $F$, respectively. The circumcircle of triangle $AEF$ meets $\omega$ again at $P$, and lines $PN$ and $BC$ intersect at $Q$. Prove that lines $IQ$ and $DN$ intersect on $\omega$.
+
+---
+
+## Hints
+
+### Nudge
+Start by identifying the main structure of the problem.
+
+### Focus
+Think about what mathematical object or property is central.
+
+### Key idea
+Look for a standard technique that applies here.
+
+### Finish
+Connect the key idea to reach the conclusion.
+
+---
+
+## Solution
+Solution:
+By construction, $APEF$ and $APBC$ are cyclic, and so
+$$
+\begin{aligned}
+\angle BDE &= \angle CDF = \angle AFD - \angle FCD = \angle AFE - \angle ACB = (180^\circ - \angle EPA) - (180^\circ - \angle BPA) \\
+&= \angle BPA - \angle EPA = \angle BPE.
+\end{aligned}
+$$
+Hence $DBEP$ is cyclic, too. It follows that $\angle IDP = \angle EDP = \angle EBP = \angle ABP = \angle ANP = \angle INP$ since $APBN$ is cyclic, and so $PDNI$ is also cyclic. In particular, $\angle DPN = \angle DIN = 90^\circ$. Let $R$ denote the second intersection of $DP$ and $\omega$, so $NQ \perp DR$. Then $\angle NPR = 90^\circ$, so $RN$ is a diameter of $\omega$. It is well-known that $N$ is the midpoint of the arc $\widehat{BC}$ not containing $A$, whence $RN \perp BC$. Thus $DQ$ and $NQ$ are altitudes of triangle $RDN$, and so $Q$ is its orthocentre. This implies that $RQ \perp DN$, whence, since $RN$ is a diameter of $\omega$, the intersection $X$ of $RQ$ and $DN$ lies on $\omega$.
+
+
+
+It is also well-known that $N$ is the centre of the circumcircle $\Omega$ of triangle $BCI$. Since $DI \perp IN$ by construction, $DI$ is tangent to $\Omega$ at $I$. As $D$ lies on the radical axis $BC$ of $\omega$ and $\Omega$, it follows that $|DI|^2 = |DB||DC| = |DX||DN|$. Hence triangles $DNI$ and $DIX$ are similar; in particular, $\angle DXI = \angle DIN = 90^\circ$. All of this shows that $R, I, Q, X$ lie on a line perpendicular to $DN$ that intersects $DN$ at $X \in \omega$. This completes the proof.

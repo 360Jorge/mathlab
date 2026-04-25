@@ -1,0 +1,46 @@
+---
+slug: "mathnet-051m"
+title: "Final Round of National Olympiad problem"
+difficulty: 3
+track: "mathnet-sample"
+domain: geometry
+topics:
+  - geometry
+strategies:
+moves:
+source: MathNet
+---
+
+## Problem
+Consider hexagons whose internal angles are all equal.
+(i) Prove that for any such hexagon the sum of the lengths of any two neighbouring sides is equal to the sum of the lengths of their opposite sides.
+(ii) Does there exist such a hexagon with side lengths 1, 2, 3, 4, 5 and 6 in some order?
+
+---
+
+## Hints
+
+### Nudge
+Start by identifying the main structure of the problem.
+
+### Focus
+Think about what mathematical object or property is central.
+
+### Key idea
+Look for a standard technique that applies here.
+
+### Finish
+Connect the key idea to reach the conclusion.
+
+---
+
+## Solution
+(i) Let the hexagon be $ABCDEF$. It suffices to show that $|AB| + |BC| = |DE| + |EF|$.
+Let $K$ be the intersection point of rays $FA$ and $CB$ and let $L$ be the intersection point of rays $FE$ and $CD$ (Fig. 8). The size of every internal angle of the hexagon is $120^\circ$, whence triangles $KAB$ and $LDE$ are equilateral. The quadrilateral $FKCL$ is a parallelogram since its opposite sides are parallel. This implies $|KC| = |LF|$ or $|KB| + |BC| = |LE| + |EF|$, which together with $|KB| = |AB|$ and $|LE| = |DE|$ implies the desired equality $|AB| + |BC| = |DE| + |EF|$.
+
+(ii) Take a parallelogram with side lengths 7 and 5 and internal angles $60^\circ$ and $120^\circ$, and cut off equilateral triangles with side lengths 1 and 2 at its acute angles. This gives rise to a hexagon with all internal angles having size $120^\circ$ and side lengths 1, 4, 5, 2, 3, 6 (Fig. 9).
+
+
+Figure 8
+
+Figure 9

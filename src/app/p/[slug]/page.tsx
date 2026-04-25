@@ -4,7 +4,11 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import Link from "next/link";
 
-import { getProblemBySlug, getAllProblems } from "@/lib/content/mdx";
+import {
+  getProblemBySlug,
+  getAllProblems,
+  getSimilarProblems,
+} from "@/lib/content/mdx";
 import { splitProblemMdx } from "@/lib/content/sections";
 import { TRACKS } from "@/lib/content/tracks";
 import ProblemWorkspace from "@/components/ProblemWorkspace";
@@ -36,6 +40,8 @@ export default async function ProblemPage({ params }: Props) {
   const prevProblem = prevSlug
     ? allProblems.find((p) => p.slug === prevSlug)
     : undefined;
+
+  const similarProblems = getSimilarProblems(data.meta, 3);
 
   const renderedHints = sections.hints.map((h) => ({
   title: h.title,
@@ -99,6 +105,50 @@ const renderedSolution =
         hints={renderedHints}
         solution={renderedSolution}
       />
+
+      {similarProblems.length > 0 ? (
+  <div className="mt-10 rounded border p-4">
+    <h2 className="text-lg font-semibold">Similar problems</h2>
+
+    <ul className="mt-3 space-y-3">
+      {similarProblems.map((p) => (
+        <li key={p.slug}>
+          <Link href={`/p/${p.slug}`} className="text-sm font-medium underline">
+            {p.title}
+          </Link>
+
+          {p.moves?.length ? (
+            <div className="mt-1 text-xs text-gray-500">
+  {(() => {
+    const sharedMoves = (p.moves ?? []).filter((m) =>
+      (data.meta.moves ?? []).includes(m)
+    );
+
+    const sharedStrategies = (p.strategies ?? []).filter((s) =>
+      (data.meta.strategies ?? []).includes(s)
+    );
+
+    if (sharedMoves.length > 0) {
+      return `Both use: ${sharedMoves
+        .map((m) => m.replaceAll("_", " "))
+        .join(", ")}`;
+    }
+
+    if (sharedStrategies.length > 0) {
+      return `Same strategy: ${sharedStrategies
+        .map((s) => s.replaceAll("_", " "))
+        .join(", ")}`;
+    }
+
+    return "Related by topic";
+  })()}
+</div>
+          ) : null}
+        </li>
+      ))}
+    </ul>
+  </div>
+) : null}
 
       {track ? (
         <div className="mt-10 rounded border p-4">

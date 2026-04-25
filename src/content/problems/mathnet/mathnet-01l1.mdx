@@ -1,0 +1,56 @@
+---
+slug: "mathnet-01l1"
+title: "60th Belarusian Mathematical Olympiad problem"
+difficulty: 3
+track: "mathnet-sample"
+domain: combinatorics
+topics:
+  - combinatorics
+  - invariants
+strategies:
+  - invariant
+moves:
+  - modulo_invariant
+source: MathNet
+---
+
+## Problem
+Exactly one integer number is written in each cell of an $8 \times 8$ square table. Per move it is allowed to choose any $n \times n$ square, $1 < n < 8$, and either to increase by 1 or to decrease by 1 all numbers in the cells of the chosen square.
+Is it possible to get the table with zeros in all its cells from the arbitrary initial table?
+(V. Kaskevich)
+
+---
+
+## Hints
+
+### Nudge
+Start by identifying the main structure of the problem.
+
+### Focus
+Think about what mathematical object or property is central.
+
+### Key idea
+Look for a standard technique that applies here.
+
+### Finish
+Connect the key idea to reach the conclusion.
+
+---
+
+## Solution
+We separate the table into five parts: the central $4 \times 4$ square, two $2 \times 8$ rectangles, and two $4 \times 2$ rectangles (see Fig. 1).
+We can obtain the 0's in all cells of the $2 \times 8$ rectangles. It suffices to show how we can change (increase by 1 or decrease by 1) the value in any cell of the rectangle so that all other cells of this rectangle keep their value. The corresponding procedures using $2 \times 2$ and $3 \times 3$ squares are shown in Fig. 2 and Fig. 3.
+
+
+
+
+Fig. 3
+
+In similar way we can change (increase by 1 or decrease by 1) the value in any cell of the $2 \times 4$ rectangles. It suffices to show how we can change the value in any cell of these rectangles so that all other cells of these rectangles and all cells of the $2 \times 8$ rectangles keep their value. The corresponding procedures are shown in Fig. 4 (see, in addition, Fig 3).
+
+
+
+It remains to change the numbers in the cells of the central $4 \times 4$ square. It suffices to show how we can change the value of any cell of this square so that all other cells of the table keep their value. The corresponding procedures are shown in Fig. 5.
+
+
+Fig. 5

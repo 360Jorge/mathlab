@@ -1,0 +1,55 @@
+---
+slug: "mathnet-009s"
+title: "NATIONAL XXX OMA problem"
+difficulty: 3
+track: "mathnet-sample"
+domain: combinatorics
+topics:
+  - coloring
+  - combinatorics
+  - invariants
+strategies:
+  - invariant
+moves:
+  - coloring_invariant
+source: MathNet
+---
+
+## Problem
+Each cell of an $n \times n$ grid square is colored black or white. We call such a coloring *nice* if every $2 \times 2$ square covers an even number of black cells, and every cross covers an odd number of black cells. Find all $n \ge 3$ such that in each nice coloring the four corner cells have the same color.
+
+---
+
+## Hints
+
+### Nudge
+Start by identifying the main structure of the problem.
+
+### Focus
+Think about what mathematical object or property is central.
+
+### Key idea
+Look for a standard technique that applies here.
+
+### Finish
+Connect the key idea to reach the conclusion.
+
+---
+
+## Solution
+Color row 1 black and rows 2, 3 white. Then extend the coloring periodically with the remaining rows until the entire square is colored. It is immediate that the obtained coloring is nice. If $n \equiv 0 \pmod{3}$ or $n \equiv 2 \pmod{3}$, the last row is white while the first one is black. So a necessary condition on $n$ is $n \equiv 1 \pmod{3}$. We prove that it is sufficient.
+
+
+For $n \equiv 1 \pmod{3}$, consider a nice coloring. For convenience write 0 in each white cell and 1 in each black cell. Then each $2 \times 2$ square covers numbers with even sum, and each cross covers numbers with odd sum. We need the following observations.
+
+a. Consider two squares $2 \times 2$ sharing one corner cell. The sum of the 8 numbers they cover, which is even, equals $a+b+c$ plus the sum of the numbers in the cross with center $b$, which is odd. It follows that $a+b+c$ is odd. By symmetry this holds for every 3 consecutive diagonal cells, in both directions.
+
+
+b. Let 4 consecutive diagonal cells cover the numbers $a$, $b$, $c$, $d$ in this order. By a), $a+b+c$ and $b+c+d$ are odd, hence $a$ and $d$ have the same parity. Because both are 0 or 1, they are in fact equal: $a=d$.
+
+c. We claim that the four corner cells of each $4 \times 4$ squares contain equal numbers. Let them be $a$, $b$, $c$, $d$, and let central four numbers be $e$, $f$, $g$, $h$ as in the figure. The latter are covered by a $2 \times 2$ square, hence $e+h$ and $f+g$ have the same parity (their sum is even). By a) the parity of $a$ (respectively $b$) is opposite to the one of $e+h$ (respectively $f+g$). It follows that $a$ and $b$ have the same parity. Hence they are equal. In addition $a=d$ and $b=c$ by b), therefore $a=b=c=d$.
+
+
+Observation c) is enough to finish the solution. It implies that the coloring is periodic with period 3, horizontally or vertically. Set $n=3k+1$ and consider the numbers in cells 1, 4, 7, ..., $3k+1=n$ of any row. By c) they are equal, in particular so are the numbers in the first and the last cell. By symmetry, the extremal cells in each column have equal numbers. Consequently the four corner numbers in the table are equal.
+
+In conclusion the numbers satisfying the condition are $n \equiv 1 \pmod{3}$.

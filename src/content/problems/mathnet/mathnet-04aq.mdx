@@ -1,0 +1,66 @@
+---
+slug: "mathnet-04aq"
+title: "CroatianCompetitions2011 problem"
+difficulty: 3
+track: "mathnet-sample"
+domain: combinatorics
+topics:
+  - coloring
+  - combinatorics
+  - invariants
+strategies:
+  - invariant
+moves:
+  - coloring_invariant
+source: MathNet
+---
+
+## Problem
+Let $M$ and $N$ be positive integers. Consider an $N \times N$ square array consisting of $N^2$ lamps that can be in two states - on or off. At the beginning all lamps are turned off.
+A *move* consists of choosing a row or a column of the array and changing the state of $M$ consecutive lamps in the chosen row or column, i.e. turning on the lamps that are turned off and vice versa.
+Determine the necessary and sufficient condition for which it can be achieved that after a finite number of moves all lamps are turned on. (Tonći Kokan)
+
+---
+
+## Hints
+
+### Nudge
+Start by identifying the main structure of the problem.
+
+### Focus
+Think about what mathematical object or property is central.
+
+### Key idea
+Look for a standard technique that applies here.
+
+### Finish
+Connect the key idea to reach the conclusion.
+
+---
+
+## Solution
+The sought condition is that $M$ divides $N$.
+
+It is easy to see that if $M$ divides $N$ we can choose a sequence of moves after which all lamps will be turned on. Really, if $N = Mk$ for some positive integer $k$ then we choose each row $k$ times. In the $(ik+j)$-th move, for $i = 0, 1, \dots, M-1$, $j = 1, \dots, k$ we choose $M$ consecutive lamps from $((j-1)k+1)$-th to $jk$-th place in $(i+1)$-th row.
+
+To prove necessity, colour the lamps in $M$ colors (named $0, 1, 2, \dots, M-1$) in a way presented on the Figure 4.1, i.e. color the lamp in the $i$-th row and $j$-th column in color $i + j - 2$ (mod $M$).
+
+
+Figure 4.1: Example of the coloring for $N = 10, M = 6$.
+
+In every move we change the state of exactly one lamp of each color. In the beginning all lamps are turned off so after each step we have the same number of lamps that are turned on in all colors. If it is possible to achieve that after some move all lamps are turned on, then the number of lamps of each color must be the same.
+
+Assume on the contrary that $M$ does not divide $N$ and let $N = Mk + r$, where $1 \le r \le M-1$. Divide the $N \times N$ array into four subarrays of dimensions $Mk \times Mk, Mk \times r, r \times Mk$ and $r \times r$ as in the Figure 4.2.
+Since each of the subarrays of dimensions $Mk \times Mk, Mk \times r$ and $r \times Mk$ is a disjoint union of sequences of $M$ consecutive lamps in a row or a column, we see that the number of lamps of each color in their union is the same (it equals $Mk^2 + 2kr$).
+
+---
+
+
+Figure 4.2: Dividing the array for $N = 10$, $M = 6$.
+
+Consider the remaining $r \times r$ subarray. On Figure 4.3 we see that the number of lamps of color $r-1$ equals $r$, but the number of lamps of color $r$ equals $r-1$. Indeed, the lamps of color $r-1$ appear in each row of the subarray exactly once and the lamps of color $r$ appear in each but first row. Also, there is no row with two or more lamps of color $r$ because $r$ is strictly less than $M$ so each row has all the lamps of different color.
+
+
+Figure 4.3: Example of the $r \times r$ subarray for $N = 10$, $M = 6$ (and $r = 4$).
+
+Hence in the whole array we have a different number of lamps of color $r-1$ and color $r$ and we can never achieve that all of the lamps are turned on.

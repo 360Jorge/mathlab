@@ -1,0 +1,44 @@
+---
+slug: "mathnet-04u6"
+title: "Czech-Polish-Slovak Match problem"
+difficulty: 3
+track: "mathnet-sample"
+domain: geometry
+topics:
+  - geometry
+strategies:
+moves:
+source: MathNet
+---
+
+## Problem
+Let $ABC$ be an acute scalene triangle. Let $D$ and $E$ be points on the sides $AB$ and $AC$, respectively, such that $BD = CE$. Denote by $O_1$ and $O_2$ the circumcentres of the triangles $ABE$ and $ACD$, respectively. Prove that the circumcircles of the triangles $ABC$, $ADE$ and $AO_1O_2$ have a common point different from $A$.
+
+---
+
+## Hints
+
+### Nudge
+Start by identifying the main structure of the problem.
+
+### Focus
+Think about what mathematical object or property is central.
+
+### Key idea
+Look for a standard technique that applies here.
+
+### Finish
+Connect the key idea to reach the conclusion.
+
+---
+
+## Solution
+Let $Z$ be the midpoint of the longer arc $BC$ of the circumcircle $\omega$ of the triangle $ABC$. The triangles $ZDB$ and $ZEC$ are congruent, because they agree in the sides $BD = CE$ and $ZB = ZC$, as well as in the corresponding angles between them, for both lie over the chord $AZ$ of $\omega$. It follows that $\angle ZDA = \angle ZEA$, which in turn discloses that the quadrilateral $ADEZ$ is cyclic. So it remains to be shown that the quadrilateral $AO_1O_2Z$ is cyclic.
+
+
+
+The center $O$ of $\omega$ satisfies $OO_1 \perp AB$ and $OO_2 \perp AC$. The projections of $O$ and $O_1$ onto $AC$ are the midpoints of $AC$ and $AE$ respectively. Thus the projection of the segment $OO_1$ onto $AC$ has length $\frac{1}{2}CE$. For the same reason, the projection of $OO_2$ on $AB$ has length $\frac{1}{2}BD$, and by hypothesis these two length agree. Moreover, the angle between $OO_1$ and $AC$ is the same as the angle between $OO_2$ and $AB$. It follows that $OO_1 = OO_2$.
+Further, we have $\angle AOO_1 = \angle ACB = \angle O_2OZ$, the latter being a consequence of $ZO \perp BC$ and $OO_2 \perp AC$. So the rays $OA$ and $OZ$ are isogonal in the angle $O_2OO_1$. In the combination with $AO = ZO$ and $OO_1 = OO_2$ this proves that
+
+the quadrilateral $AO_1O_2Z$ is an isosceles trapezium and thus in particular cyclic.
+Thereby the problem is solved.

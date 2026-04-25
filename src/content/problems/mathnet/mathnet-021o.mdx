@@ -1,0 +1,78 @@
+---
+slug: "mathnet-021o"
+title: "None problem"
+difficulty: 3
+track: "mathnet-sample"
+domain: combinatorics
+topics:
+  - combinatorics
+strategies:
+moves:
+source: MathNet
+---
+
+## Problem
+Problem:
+
+Amanda desenhou a seguinte figura:
+
+Observe que a soma ao longo de qualquer lado do triângulo acima é sempre a mesma, pois, como podemos verificar,
+$$
+1+3+6=6+2+2=1+7+2
+$$
+a) Complete os números que faltam nos círculos da figura abaixo de modo que as somas ao longo de qualquer lado do quadrado sejam sempre as mesmas.
+
+b) Encontre uma maneira de colocar os números nos círculos de maneira que as somas ao longo de qualquer linha sejam sempre as mesmas. Há mais de uma solução?
+
+c) $\mathrm{Na}$ figura abaixo, que foi desenhada apenas parcialmente (por falta de espaço!), também vale que a soma ao longo de cada segmento é sempre a mesma. Entretanto, Amanda apagou todos os números exceto os dois números mostrados na figura (3 e 4). Sabe-se que há 40 círculos no desenho. É possível descobrir quais números estavam nos círculos pintados de cinza claro e cinza escuro?
+
+---
+
+## Hints
+
+### Nudge
+Start by identifying the main structure of the problem.
+
+### Focus
+Think about what mathematical object or property is central.
+
+### Key idea
+Look for a standard technique that applies here.
+
+### Finish
+Connect the key idea to reach the conclusion.
+
+---
+
+## Solution
+Solution:
+
+a) Na linha inferior a soma é $2+3+5=10$. Como as somas ao longo de qualquer lado são iguais, o número que falta no canto superior à direita do quadrado deve ser igual a 2, como na figura a seguir:
+
+Faltam mais dois números a serem preenchidos. Novamente, como a soma deve ser 10 em qualquer lado, os números que faltam são 1 e 3, como na figura a seguir:
+
+
+b) Vamos chamar de $x$ e $y$ os números a serem colocados nos cantos superiores do quadrado, como na figura a seguir:
+
+As somas devem ser constantes ao longo de qualquer lado ou diagonal desenhada. A soma ao longo do lado superior é $x+9+y$, logo todas as somas devem ser iguais a $x+9+y$. Observando as somas ao longo dos lados verticais, deduzimos que os cantos inferiores devem ser iguais a $y-6$ e $x+3$, como na figura a seguir:
+
+Falta verificar a soma ao longo da diagonal desenhada e do lado horizontal inferior. A soma ao longo do lado horizontal inferior é igual a
+$$
+(y-6)+12+(x+3)=x+9+y
+$$
+verificando a soma desejada. Verificando a soma ao longo da diagonal desenhada, obtemos
+$$
+x+17+(x+3)=x+9+y
+$$
+de onde concluímos que $y=x+11$. Logo, qualquer solução será da forma
+
+Como o valor de $x$ ainda não foi fixado, podemos obter muitas soluções! Por exemplo, tomando $x=0$, obtemos a solução:
+
+
+c) Chamemos de $x$ e $y$ os números vizinhos aos números 3 e 4, como na figura a seguir:
+
+Como a soma ao longo de cada segmento é constante, os dois próximos números devem ser iguais a 3 e 4:
+
+Como há 40 círculos no desenho, há 20 círculos na linha de cima e 20 círculos na linha de baixo. Continuando o processo acima, vamos obter:
+
+Observe $\mathrm{o}\ x$ no canto superior mais à direita. Este $x$ está ligado ao $4\ \mathrm{e}$ ao $y$. Como $x+4=x+y$, concluímos que $y=4$. Logo, os números nos dois círculos cinza são iguais a 4.

@@ -1,0 +1,73 @@
+---
+slug: "mathnet-00hy"
+title: "APMO problem"
+difficulty: 3
+track: "mathnet-sample"
+domain: geometry
+topics:
+  - coloring
+  - combinatorics
+  - geometry
+  - invariants
+strategies:
+  - invariant
+moves:
+  - coloring_invariant
+source: MathNet
+---
+
+## Problem
+There are $n$ line segments on the plane, no three intersecting at a point, and each pair intersecting once in their respective interiors. Tony and his $2 n-1$ friends each stand at a distinct endpoint of a line segment. Tony wishes to send Christmas presents to each of his friends as follows:
+First, he chooses an endpoint of each segment as a "sink". Then he places the present at the endpoint of the segment he is at. The present moves as follows:
+- If it is on a line segment, it moves towards the sink.
+- When it reaches an intersection of two segments, it changes the line segment it travels on and starts moving towards the new sink.
+If the present reaches an endpoint, the friend on that endpoint can receive their present. Prove Tony can send presents to exactly $n$ of his $2 n-1$ friends.
+
+---
+
+## Hints
+
+### Nudge
+Start by identifying the main structure of the problem.
+
+### Focus
+Think about what mathematical object or property is central.
+
+### Key idea
+Look for a standard technique that applies here.
+
+### Finish
+Connect the key idea to reach the conclusion.
+
+---
+
+## Solution
+Draw a circle that encloses all the intersection points between line segments and extend all line segments until they meet the circle, and then move Tony and all his friends to the circle. Number the intersection points with the circle from 1 to $2 n$ anticlockwise, starting from Tony (Tony has number 1). We will prove that the friends eligible to receive presents are the ones on even-numbered intersection points.
+
+First part: at most $n$ friends can receive a present.
+
+The solution relies on a well-known result: the $n$ lines determine regions inside the circle; then it is possible to paint the regions with two colors such that no regions with a common (line) boundary have the same color. The proof is an induction on $n$ : the fact immediately holds for $n=0$, and the induction step consists on taking away one line $\ell$, painting the regions obtained with $n-1$ lines, drawing $\ell$ again and flipping all colors on exactly one half plane determined by $\ell$.
+
+Now consider the line starting on point 1. Color the regions in red and blue such that neighboring regions have different colors, and such that the two regions that have point 1 as a vertex are red on the right and blue on the left, from Tony's point of view. Finally, assign to each red region the clockwise direction and to each blue region the anticlockwise direction. Because of the coloring, every boundary will have two directions assigned, but the directions are the same since every boundary divides regions of different colors. Then the present will follow the directions assigned to the regions: it certainly does for both regions in the beginning, and when the present reaches an intersection it will keep bordering one of the two regions it was dividing. To finish this part of the problem, consider the regions that share a boundary with the circle. The directions alternate between outcoming and incoming, starting from 1 (outcoming), so all even-numbered vertices are directed as incoming and are the only ones able to receive presents.
+
+Second part: all even-numbered vertices can receive a present.
+
+First notice that, since every two chords intersect, every chord separates the endpoints of each of the other $n-1$ chords. Therefore, there are $n-1$ vertices on each side of every chord, and each chord connects vertices $k$ and $k+n, 1 \leq k \leq n$.
+
+We prove a stronger result by induction in $n$ : let $k$ be an integer, $1 \leq k \leq n$. Direct each chord from $i$ to $i+n$ if $1 \leq i \leq k$ and from $i+n$ to $i$ otherwise; in other words, the sinks are $k+1, k+2, \ldots, k+n$. Now suppose that each chord sends a present, starting from the vertex opposite to each sink, and all presents move with the same rules. Then $k-i$ sends a present to $k+i+1, i=0,1, \ldots, n-1$ (indices taken modulo $2 n$ ). In particular, for $i=k-1$, Tony, in vertex 1, send a present to vertex $2 k$. Also, the $n$ paths the presents make do not cross (but they may touch.) More formally, for all $i, 1 \leq i \leq n$, if one path takes a present from $k-i$ to $k+i+1$, separating the circle into two regions, all paths taking a present from $k-j$ to $k+j+1, j<i$, are completely contained in one region, and all paths taking a present from $k-j$ to $k+j+1, j>i$, are completely contained in the other region. For instance, possible $\{ \}^\{1\}$ paths for $k=3$ and $n=5$ follow:
+
+
+
+The result is true for $n=1$. Let $n>1$ and assume the result is true for less chords. Consider the chord that takes $k$ to $k+n$ and remove it. Apply the induction hypothesis to the remaining $n-1$ lines: after relabeling, presents would go from $k-i$ to $k+i+2,1 \leq i \leq n-1$ if the chord were not there.
+
+Reintroduce the chord that takes $k$ to $k+n$. From the induction hypothesis, the chord intersects the paths of the presents in the following order: the $i$-th path the chord intersects is the the one that takes $k-i$ to $k+i, i=1,2, \ldots, n-1$.
+
+
+
+Paths without chord $k \rightarrow k+n$
+
+
+
+Corrected paths with chord $k \rightarrow k+n$
+
+Then the presents cover the following new paths: the present from $k$ will leave its chord and take the path towards $k+1$; then, for $i=1,2, \ldots, n-1$, the present from $k-i$ will meet the chord from $k$ to $k+n$, move towards the intersection with the path towards $k+i+1$ and go to $k+i+1$, as desired. Notice that the paths still do not cross. The induction (and the solution) is now complete.

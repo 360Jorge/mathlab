@@ -1,0 +1,46 @@
+---
+slug: "mathnet-00k4"
+title: "AustriaMO2013 problem"
+difficulty: 3
+track: "mathnet-sample"
+domain: geometry
+topics:
+  - geometry
+strategies:
+moves:
+source: MathNet
+---
+
+## Problem
+Let $ABCDEF$ be a regular octahedron with lower vertex $E$, upper vertex $F$, middle slice plane $ABCD$, center $M$ and circumsphere $k$. Furthermore let $X$ be an arbitrary point within side $ABF$. The line $EX$ intersects $k$ in $E$ and $Z$ and the plane $ABCD$ in $Y$.
+$$
+\text{Show that } \langle EMZ \rangle = \langle EYF \rangle.
+$$
+
+---
+
+## Hints
+
+### Nudge
+Start by identifying the main structure of the problem.
+
+### Focus
+Think about what mathematical object or property is central.
+
+### Key idea
+Look for a standard technique that applies here.
+
+### Finish
+Connect the key idea to reach the conclusion.
+
+---
+
+## Solution
+We intersect the entire figure with the plane through the points $X$, $E$ and $F$. Since $M$ is on line $EF$, it is part of that plane. Also points $Y$ and $Z$ are part of that plane because they are on line $EX$. The intersection of the circumsphere $k$ and the plane results in a circle $k'$, which also has $M$ as its center. The intersection of $ABCD$ with the plane is the perpendicular bisector of line $EF$, and $Y$ is on that bisector.
+
+
+We denote $\angle ZEF = \alpha$.
+Since $ZM$ and $EM$ are both radii of $k$ (and $k'$), the triangle $ZME$ is isosceles, therefore
+$\angle EZM = \angle ZEM = \alpha$.
+Since $Y$ is on the bisector of $EF$, also triangle $EYF$ is isosceles, therefore $\angle YFE = \angle YEF = \alpha$.
+Therefore the triangles $ZME$ and $EYF$ are similar, and their corresponding angles $\angle EMZ$ and $\angle EYF$ are identical. $\square$

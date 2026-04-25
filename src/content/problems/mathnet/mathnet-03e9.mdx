@@ -1,0 +1,60 @@
+---
+slug: "mathnet-03e9"
+title: "Autumn tournament problem"
+difficulty: 3
+track: "mathnet-sample"
+domain: geometry
+topics:
+  - combinatorics
+  - geometry
+  - pigeonhole
+strategies:
+  - pigeonhole
+moves:
+  - simple_pigeonhole
+source: MathNet
+---
+
+## Problem
+A set of points in the plane is called good if the distance between any two points in it is at most $1$. Let $f(n, d)$ be the largest positive integer such that in any good set of $3n$ points, there is a circle of diameter $d$, which contains at least $f(n, d)$ points. Prove that there exists a positive real $\epsilon$, such that for all $d \in (1 - \epsilon, 1)$, the value of $f(n, d)$ does not depend on $d$ and find that value as a function of $n$.
+(Kristiyan Vasilev, Konstantin Garov)
+
+---
+
+## Hints
+
+### Nudge
+Start by identifying the main structure of the problem.
+
+### Focus
+Think about what mathematical object or property is central.
+
+### Key idea
+Look for a standard technique that applies here.
+
+### Finish
+Connect the key idea to reach the conclusion.
+
+---
+
+## Solution
+Since $m(n, d)$ is an increasing function of $d$ and it cannot be larger than $3n$, clearly it hits a constant when $d$ approaches $1$. Fix some $d$, $d < 1$, it may be very close to $1$. Take an equilateral triangle with side length $1$ and put inside it $3n$ points — $n$ points near each of its vertices so that they be at distance less than $(1 - d)/2$ from the corresponding vertex — see figure 1.
+
+
+
+This set of points apparently is a good set. A disk with radius $d$ cannot cover a point that is near to one vertex and a point near another vertex. That is, the maximum number of points that could be covered with such a disk is $n$. This means that $m(n, d) \le n$ no matter how close to $1$ the value of $d$ is.
+
+We will prove that $m(n, d) = n$ when $d$ is close to $1$. To prove this we need to study the good set of points. How close together are its points? Can we claim that all of them lie in disk with some not too large radius? Of course, they lie in a disk with radius $1$ since if you take one of the points, the rest are at distance at most $1$ from this point. But can we claim that all of them lie in a disk with a smaller radius? Clearly, they may not lie in a disk with radius $1/2$ — the equilateral triangle with side length $1$ is an example that disproves this. Crucial to this problem is the following observation.
+**Lemma.** Any good set can be put inside a disk with radius $\frac{1}{\sqrt{3}}$. That is, any good set can be put inside a circle circumscribed about an equilateral triangle with a side length $1$.
+
+The official solution proves it by using Helly's theorem which is instructive. Another method is used here.
+**Proof.** Let $X$ be a good set. We first show that $X$ lies in a circle circumscribed about an acute triangle with side lengths less or equal to $1$. Take the convex hull of $X$ and put it inside a circle with some radius. We begin to tighten this circle until it touches $1$ and then $2$ points of the convex hull. We can tighten the circle further unless these two points lie on its diameter. In this case $A$ lies in a circle with a diameter at most $1$. So, assume we decrease the circle $k$ until it touches $3$ points of $X$, say $A, B, C$. If these points are vertices of an acute triangle we are done, so suppose $\angle ACB \ge 90^\circ$ — see figure 2. We begin to further decrease the diameter of $k$ keeping the points $A$ and $B$ on the circle. This can be done until the first of the following two events happens:
+1. The circle hits a point $C' \in X$ (and $C'$ and $C$ lie on different sides of $AB$).
+2. $AB$ becomes a diameter of $k$.
+
+
+
+If the second event happens first, we are done since $X$ lies in a disk with diameter $1$. In case of the first event, the triangle $ABC'$ is acute. Next, since $\triangle ABC'$ is acute one of its angles, say $\angle AC'B$, is greater or equal to $60^\circ$. It follows the radius of $k' = \frac{AB}{2 \sin \angle C} \le \frac{1}{\sqrt{3}}$.
+So, we proved that we can cover $X$ with a circle $k$ with radius $1/\sqrt{3}$. $\square$
+
+Take a point $A \in k$ and construct the points $B, C, D \in k$ such that $AB = BC = CD = d$ — see figure 3. We construct three disks with diameters $AB, BC, CD$ correspondingly. These disks cover all the points inside $k$ except the red piece in figure 3. Note now that by taking $d$ close to $1$, the point $D$ will be as close to $A$ as we want. This means that we can make the red piece on figure 3 as small as we want. We take $d$ so close to $1$ so that the measure of the arc $AD$ (on figure 3) is less than $\frac{2\pi}{3n+1}$. If the red piece does not contain a point of $X$ we are done. Otherwise we begin to rotate the point $A$ and the entire configuration around $k$. It is not possible that every time the red piece hits a point of $X$ since otherwise the number of points in $X$ would be more than $3n$. Therefore we can cover $X$ with $3$ disks of diameter $d$, hence one of these disks contains at least $n$ points. Thus, we proved that $m(n,d) \ge n$ and combined with $m(n,d) \le n$ this yields $m(n,d) = n$ providing $d$ is close to $1$. $\square$
