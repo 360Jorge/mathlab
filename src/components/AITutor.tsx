@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase/client";
+import MathRenderer from "./MathRenderer";
 
 type AIAction = "hint" | "check_idea" | "missing_concept";
 
@@ -121,7 +122,9 @@ export default function AITutor({
       {reply ? (
         <div className="rounded border p-4">
           <div className="mb-2 text-sm font-medium">AI Tutor</div>
-          <p className="text-sm text-gray-700">{reply}</p>
+          <div className="text-sm text-gray-700">
+              <MathRenderer content={reply} />
+          </div>
         </div>
       ) : null}
     </div>
