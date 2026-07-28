@@ -9,25 +9,28 @@ export default function HintLadder({
   hints: Array<{ title: string; body: React.ReactNode }>;
   storageKey: string;
 }) {
-  const [revealed, setRevealed] = useState(0);
+  const [revealed, setRevealed] = useState(() => {
+    if (typeof window === "undefined") return 0;
 
-  // load persisted
-  useEffect(() => {
     const saved = localStorage.getItem(storageKey);
-    if (saved) {
-      const n = Number(saved);
-      if (!Number.isNaN(n)) setRevealed(Math.max(0, Math.min(n, hints.length)));
-    }
-  }, [storageKey, hints.length]);
+    if (!saved) return 0;
 
-  // persist on change
+    const n = Number(saved);
+    if (Number.isNaN(n)) return 0;
+
+    return Math.max(0, Math.min(n, hints.length));
+  });
+
   useEffect(() => {
     localStorage.setItem(storageKey, String(revealed));
   }, [revealed, storageKey]);
 
   const canRevealMore = revealed < hints.length;
 
-  const visibleHints = useMemo(() => hints.slice(0, revealed), [hints, revealed]);
+  const visibleHints = useMemo(
+    () => hints.slice(0, revealed),
+    [hints, revealed]
+  );
 
   return (
     <div className="space-y-4">
@@ -49,7 +52,9 @@ export default function HintLadder({
         </button>
 
         <span className="text-sm text-gray-600">
-          {hints.length === 0 ? "No hints yet." : `${revealed}/${hints.length} revealed`}
+          {hints.length === 0
+            ? "No hints yet."
+            : `${revealed}/${hints.length} revealed`}
         </span>
       </div>
 

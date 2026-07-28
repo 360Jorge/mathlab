@@ -15,7 +15,11 @@ export default function AttemptEditor({
   onChange,
   onAskAI,
 }: AttemptEditorProps) {
-  const [internalText, setInternalText] = useState("");
+  const [internalText, setInternalText] = useState(() => {
+    if (typeof window === "undefined") return "";
+    return localStorage.getItem(storageKey) ?? "";
+  });
+
   const [status, setStatus] = useState<"idle" | "saved">("idle");
   const saveTimer = useRef<number | null>(null);
 
@@ -23,18 +27,22 @@ export default function AttemptEditor({
   const text = isControlled ? value : internalText;
 
   useEffect(() => {
+    if (!isControlled) return;
+
     const saved = localStorage.getItem(storageKey);
-    if (saved !== null) {
-      if (isControlled) {
-        onChange?.(saved);
-      } else {
-        setInternalText(saved);
-      }
-    }
+    if (saved === null) return;
+
+    const timer = window.setTimeout(() => {
+      onChange?.(saved);
+    }, 0);
+
+    return () => window.clearTimeout(timer);
   }, [storageKey, isControlled, onChange]);
 
   useEffect(() => {
-    if (saveTimer.current) window.clearTimeout(saveTimer.current);
+    if (saveTimer.current) {
+      window.clearTimeout(saveTimer.current);
+    }
 
     saveTimer.current = window.setTimeout(() => {
       localStorage.setItem(storageKey, text);
@@ -44,7 +52,9 @@ export default function AttemptEditor({
     }, 300);
 
     return () => {
-      if (saveTimer.current) window.clearTimeout(saveTimer.current);
+      if (saveTimer.current) {
+        window.clearTimeout(saveTimer.current);
+      }
     };
   }, [text, storageKey]);
 
@@ -62,6 +72,7 @@ export default function AttemptEditor({
     } else {
       setInternalText("");
     }
+
     localStorage.removeItem(storageKey);
     setStatus("idle");
   }

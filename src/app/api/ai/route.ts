@@ -90,7 +90,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const model = process.env.OLLAMA_MODEL ?? "gemma3";
+    const model = process.env.OLLAMA_MODEL ?? "gemma4:cloud";
     const apiKey = process.env.OLLAMA_API_KEY;
 
     if (!apiKey) {
@@ -107,7 +107,7 @@ export async function POST(req: Request) {
     Authorization: `Bearer ${process.env.OLLAMA_API_KEY}`,
   },
   body: JSON.stringify({
-    model: process.env.OLLAMA_MODEL || "gemma3",
+    model,
     messages: [
       {
         role: "system",

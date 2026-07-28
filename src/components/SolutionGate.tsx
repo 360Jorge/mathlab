@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function SolutionGate({
   solution,
@@ -11,12 +11,10 @@ export default function SolutionGate({
   storageKey: string;
   lockedMessage?: string;
 }) {
-  const [revealed, setRevealed] = useState(false);
-
-  useEffect(() => {
-    const saved = localStorage.getItem(storageKey);
-    if (saved === "1") setRevealed(true);
-  }, [storageKey]);
+  const [revealed, setRevealed] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return localStorage.getItem(storageKey) === "1";
+  });
 
   function reveal() {
     setRevealed(true);
